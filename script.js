@@ -13,7 +13,7 @@ function createHourMarks(theme = "digital") {
       const number = document.createElement("div");
       number.className = "number neon";
       number.textContent = romans[i];
-      number.style.transform = `rotate(-${i * 30}deg)`;
+      number.style.transform = `rotate(-${i * 30}deg)` ;
       mark.appendChild(number);
     }
 
@@ -44,7 +44,7 @@ function setHand(id, angle, distance, value, count) {
   }
 
   hand.innerHTML = "";
-  hand.style.transform = `rotate(${angle}deg)`;
+  hand.style.transform = `rotate(${angle +180}deg)`;
 
   for (let i = 0; i < count; i++) {
     const span = document.createElement("span");
