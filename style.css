@@ -1,0 +1,186 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #222;
+}
+
+.clock {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mark {
+  position: absolute;
+  width: 4px;
+  height: 15px;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform-origin: center bottom;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+}
+
+.hand span {
+  position: absolute;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.theme-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 15px #00ffcc;
+}
+
+/* Boutons */
+.theme-buttons {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.theme-buttons button {
+  background: #444;
+  color: #fff;
+  border: 1px solid #777;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.theme-buttons button:hover {
+  background: #d35400;
+  color: #222;
+  transform: scale(1.1);
+}
+
+/* --- Thème Romain --- */
+.romain-theme .hand span {
+  color: #f39c12;
+}
+
+.romain-theme .mark .number {
+  color: #d35400;
+  font-size: 30px;
+  text-shadow: 0 0 10px #d35400, 0 0 20px #d35400;
+}
+
+.number.neon {
+  position: absolute;
+  top: 20px; 
+  left: -300%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  font-size: 30px;
+  color: orange;
+  text-shadow: 0 0 10px orange, 0 0 20px orange;
+}
+
+
+/* --- Thème Digital --- */
+.digital-theme .mark {
+  background: #ff0040;
+  height: 20px;
+  width: 2px;
+  animation: blink-digital 1.5s infinite alternate;
+}
+
+.digital-theme .hand span {
+  color: #00ffcc;
+  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+}
+
+.digital-theme .clock {
+  box-shadow: 0 0 30px rgba(255, 0, 64, 0.5), inset 0 0 20px rgba(255, 0, 64, 0.5);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 20%, transparent 80%);
+  animation: digital-glow 4s infinite alternate;
+}
+
+/* --- Thème Moderne --- */
+.moderne-theme .mark {
+  background: linear-gradient(45deg, #ffd700, #ffa500);
+  height: 15px;
+  width: 3px;
+  border-radius: 5px;
+  animation: gradient-shift 2s infinite alternate;
+}
+
+.moderne-theme .hand span {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+}
+
+.moderne-theme .clock {
+  border: 2px solid transparent;
+  background: linear-gradient(90deg, #ffd700, #ffa500);
+  background-clip: padding-box;
+  animation: border-glow 3s infinite alternate;
+}
+
+/* --- Animations Globales --- */
+@keyframes blink-digital {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-shift {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes border-glow {
+  from {
+    border-color: #ffd700;
+  }
+  to {
+    border-color: #ffa500;
+  }
+}
+
+@keyframes digital-glow {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
