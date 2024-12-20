@@ -51,3 +51,4 @@ Ce projet vise à :
 1. **`index.html`** : Contient le squelette de la page (horloge, boutons de sélection, etc.).
 2. **`style.css`** : Définit l'apparence visuelle de l'horloge, des aiguilles et des différents modes.
 3. **`script.js`** : Gère l'animation des aiguilles, l'affichage numérique, et les changements de thème.
+![horloge](https://github.com/user-attachments/assets/11888128-0461-4e29-bf7e-a8ae7bbe97b4)
