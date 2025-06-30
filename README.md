@@ -1,5 +1,5 @@
 ﻿# Horloge Analogique et Numérique
- 
+
 ![Horloge Romaine](https://github.com/user-attachments/assets/3b1fb2c6-e4a2-4398-a9e5-88f520fac9a6)
 
 ## Description
@@ -29,6 +29,7 @@ Ce projet a pour objectif de créer une **horloge interactive** combinant une re
 ## Objectifs pédagogiques
 
 Ce projet vise à :
+
 - Comprendre et manipuler les **fonctions de temps** en JavaScript, comme `Date()`.
 - Étudier et pratiquer la **manipulation du DOM** (ajout dynamique d'éléments).
 - Utiliser des **transformations CSS** pour animer des objets (ex. `rotate`, `translate`).
@@ -48,6 +49,7 @@ Ce projet vise à :
 ## Fonctionnement
 
 ### Structure du projet
+
 1. **`index.html`** : Contient le squelette de la page (horloge, boutons de sélection, etc.).
 2. **`style.css`** : Définit l'apparence visuelle de l'horloge, des aiguilles et des différents modes.
 3. **`script.js`** : Gère l'animation des aiguilles, l'affichage numérique, et les changements de thème.
