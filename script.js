@@ -64,6 +64,25 @@ function setTheme(theme) {
   createHourMarks(theme);
 }
 
+// Fonction de redimensionnement adaptatif
+function adjustClockSize() {
+  const clock = document.getElementById("clock");
+  const clockSize = Math.min(clock.offsetWidth, clock.offsetHeight);
+  
+  // Ajuster la distance des marques selon la taille
+  const marks = clock.querySelectorAll('.mark');
+  marks.forEach((mark, i) => {
+    const distance = (clockSize / 2) - 20;
+    mark.style.transform = `translate(-50%, -100%) rotate(${i * 30}deg) translateY(-${distance}px)`;
+  });
+}
+
+// Démarrage et gestion du redimensionnement
+window.addEventListener('resize', () => {
+  adjustClockSize();
+});
+
 setTheme("digital"); // Démarrage par défaut en mode digital
 setInterval(updateClock, 1000);
 updateClock();
+adjustClockSize();

@@ -1,3 +1,8 @@
+/* Variables pour responsive */
+:root {
+  --clock-size: min(90vw, 90vh, 500px);
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,12 +11,14 @@ body {
   height: 100vh;
   margin: 0;
   background: #222;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .clock {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: var(--clock-size);
+  height: var(--clock-size);
   border: 2px solid white;
   border-radius: 50%;
 }
@@ -63,9 +70,16 @@ body {
   position: absolute;
   top: 20px;
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  padding: 0 20px;
+}
+
+.theme-buttons > div:last-child {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .theme-buttons button {
@@ -105,7 +119,6 @@ body {
   color: orange;
   text-shadow: 0 0 10px orange, 0 0 20px orange;
 }
-
 
 /* --- Thème Digital --- */
 .digital-theme .mark {
@@ -182,5 +195,59 @@ body {
   }
   to {
     background-position: 100% 100%;
+  }
+}
+
+/* Media Queries pour responsive */
+@media (max-width: 768px) {
+  .theme-buttons {
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .theme-title {
+    font-size: 20px;
+  }
+  
+  .theme-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .hand span {
+    font-size: 16px;
+  }
+  
+  .number.neon {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .theme-buttons button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .hand span {
+    font-size: 14px;
+  }
+  
+  .number.neon {
+    font-size: 20px;
+  }
+  
+  .theme-title {
+    font-size: 18px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --clock-size: min(80vh, 400px);
   }
 }
