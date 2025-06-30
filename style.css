@@ -112,12 +112,14 @@ body {
 
 .number.neon {
   position: absolute;
-  top: 20px; 
-  left: -300%;
-  transform: translate(-50%, -50%) rotate(0deg);
-  font-size: 30px;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  font-size: clamp(16px, 4vw, 30px);
   color: orange;
   text-shadow: 0 0 10px orange, 0 0 20px orange;
+  width: 40px;
+  text-align: center;
 }
 
 /* --- Thème Digital --- */

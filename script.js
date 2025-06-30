@@ -3,18 +3,27 @@ function createHourMarks(theme = "digital") {
   clock.innerHTML = '<div class="center"></div>';
 
   const romans = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"];
+  
+  // Calculer le rayon une seule fois
+  const clockSize = Math.min(clock.offsetWidth, clock.offsetHeight);
+  const markDistance = (clockSize / 2) - 20;
 
   for (let i = 0; i < 12; i++) {
     const mark = document.createElement("div");
     mark.className = "mark";
-    mark.style.transform = `translate(-50%, -100%) rotate(${i * 30}deg) translateY(-240px)`;
+    mark.style.transform = `translate(-50%, -100%) rotate(${i * 30}deg) translateY(-${markDistance}px)`;
 
     if (theme === "romain") {
       const number = document.createElement("div");
       number.className = "number neon";
       number.textContent = romans[i];
-      number.style.transform = `rotate(-${i * 30}deg)` ;
+      number.style.transform = `rotate(-${i * 30}deg)`;
       mark.appendChild(number);
+      
+      // En mode romain, rendre la marque invisible
+      mark.style.background = "transparent";
+      mark.style.width = "auto";
+      mark.style.height = "auto";
     }
 
     clock.appendChild(mark);
@@ -44,45 +53,42 @@ function setHand(id, angle, distance, value, count) {
   }
 
   hand.innerHTML = "";
-  hand.style.transform = `rotate(${angle +180}deg)`;
+  hand.style.transform = `rotate(${angle + 180}deg)`;
+  
+  // Ajuster la distance selon la taille de l'horloge
+  const clockSize = Math.min(clock.offsetWidth, clock.offsetHeight);
+  const baseDistance = clockSize * 0.2; // 20% du diamètre comme base
+  const adjustedDistance = baseDistance + (distance / 240) * (clockSize * 0.25);
 
   for (let i = 0; i < count; i++) {
     const span = document.createElement("span");
-    span.textContent = value;
-    span.style.top = `${distance - i * 20}px`;
+    span.textContent = value.toString().padStart(2, '0');
+    span.style.top = `${adjustedDistance - i * 15}px`; // Réduire l'espacement
     hand.appendChild(span);
   }
 }
 
 function setTheme(theme) {
   const clock = document.getElementById("clock");
+  currentTheme = theme; // Sauvegarder le thème actuel
 
   clock.classList.remove("digital-theme", "romain-theme", "moderne-theme");
-
   clock.classList.add(`${theme}-theme`);
 
   createHourMarks(theme);
 }
 
-// Fonction de redimensionnement adaptatif
-function adjustClockSize() {
-  const clock = document.getElementById("clock");
-  const clockSize = Math.min(clock.offsetWidth, clock.offsetHeight);
-  
-  // Ajuster la distance des marques selon la taille
-  const marks = clock.querySelectorAll('.mark');
-  marks.forEach((mark, i) => {
-    const distance = (clockSize / 2) - 20;
-    mark.style.transform = `translate(-50%, -100%) rotate(${i * 30}deg) translateY(-${distance}px)`;
-  });
-}
-
 // Démarrage et gestion du redimensionnement
 window.addEventListener('resize', () => {
-  adjustClockSize();
+  createHourMarks(currentTheme);
 });
 
-setTheme("digital"); // Démarrage par défaut en mode digital
-setInterval(updateClock, 1000);
-updateClock();
-adjustClockSize();
+// Variable pour stocker le thème actuel
+let currentTheme = "digital";
+
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+  setTheme("digital");
+  setInterval(updateClock, 1000);
+  updateClock();
+});
